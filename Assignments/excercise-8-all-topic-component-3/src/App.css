@@ -1,0 +1,112 @@
+.App {
+  text-align: center;
+}
+
+.shell {
+  display: flex;
+  margin-top: 5%;
+}
+
+.chat-window {
+  text-align: center;
+  width: 500px;
+  height: 100%;
+  margin: auto;
+  border: 15px solid #2eb9ce;
+  padding: 20px;
+  border-radius: 10px;
+  color: #019ad2;
+  font-size: 1.2em;
+}
+
+.centered {
+  position: fixed;
+  left: 50%;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.message-list {
+  list-style-type: none;
+  height: 80%;
+  border: 1px solid;
+  text-align: left;
+  min-height: 400px;
+  border-radius: 10px;
+  padding-top: 1em;
+}
+
+.name {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2.2em;
+  text-align: center !important;
+}
+
+.input-group,
+.input-group-append {
+  border-radius: 10px;
+  color: #2eb9ce !important;
+}
+
+.submit-button {
+  background-color: #2eb9ce;
+  color: black;
+}
+
+.submit-button:hover,
+.submit-button:active,
+.submit-button:focus {
+  border-color: #2eb9ce;
+  color: black;
+  outline: none !important;
+  box-shadow: none;
+  background-color: #3498db;
+}
+
+.form-control,
+.form-control:focus {
+  border-color: #2eb9ce;
+  outline: 0 !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: black;
+}
+
+.sender {
+  color: #29a979;
+}
+
+.recipient {
+  color: #019ad2;
+}
+
