@@ -1,16 +1,18 @@
 // Good article to read on form https://medium.com/javascript-inside/better-understanding-forms-in-react-a85d889773ce
 
+//List of all supported HTML attributes that can be passed along to the React element
+//https://facebook.github.io/react/docs/dom-elements.html#all-supported-html-attributes
+
 import React from 'react'
 import './App.css'
 
-
-function ErrorMessage(props) {
+function ErrorMessage (props) {
   const { message } = props
 
   return <span style={{ color: 'red' }}>{message}</span>
 }
 
-function ControlledInputBox(props) {
+function ControlledInputBox (props) {
   const { handleInputChange, textBoxValue, noCityFlag } = props
 
   return (
@@ -21,22 +23,22 @@ function ControlledInputBox(props) {
   )
 }
 
-function ButtonComponent(props) {
+function ButtonComponent (props) {
   return (
-    <button style={{backgroundColor: 'navy', color: 'white'}}>Save changes</button>
+    <button style={{ backgroundColor: 'navy', color: 'white' }}>
+      Save changes
+    </button>
   )
 }
-
-
 
 class MyComponent extends React.Component {
   state = {
     cityArray: ['Karachi', 'Lahore', 'Peshawar', 'Quetta'],
     textBoxValue: '',
-    noCityFlag: false,
+    noCityFlag: false
   }
 
-  handleInputChange = (e) => {
+  handleInputChange = e => {
     const { value } = e.target
     this.setState({
       textBoxValue: value
@@ -53,7 +55,7 @@ class MyComponent extends React.Component {
     }))
   }
 
-  removeCity = (event) => {
+  removeCity = event => {
     const { cityArray } = this.state
     const { value } = event.target
 
@@ -64,7 +66,7 @@ class MyComponent extends React.Component {
     })
   }
 
-  handleForm = (event) => {
+  handleForm = event => {
     const { textBoxValue } = this.state
 
     event.preventDefault()
@@ -76,37 +78,57 @@ class MyComponent extends React.Component {
     }
   }
 
-  render() {
+  render () {
     const { cityArray, textBoxValue, noCityFlag } = this.state
 
     return (
       <form onSubmit={this.handleForm}>
-        <ul style={{border: '1px solid black', padding: '10px'}}>
-          {
-            cityArray.map(city => <li className='li-styling' key={city} style={{ color: cityArray.length > 5 ? 'red' : 'blue' }}> 
-              {city} 
-              <button className='li-styling' value={city} onClick={this.removeCity}>X</button>
-            </li>)
-          }
+        <ul style={{ border: '1px solid black', padding: '10px' }}>
+          {cityArray.map(city => (
+            <li
+              className='li-styling'
+              key={city}
+              style={{ color: cityArray.length > 5 ? 'red' : 'blue' }}
+            >
+              {city}
+              <button
+                className='li-styling'
+                value={city}
+                onClick={this.removeCity}
+              >
+                X
+              </button>
+            </li>
+          ))}
         </ul>
-        <ControlledInputBox textBoxValue={textBoxValue} handleInputChange={this.handleInputChange} noCityFlag={noCityFlag} />
+        <ControlledInputBox
+          textBoxValue={textBoxValue}
+          handleInputChange={this.handleInputChange}
+          noCityFlag={noCityFlag}
+        />
         <ButtonComponent />
       </form>
     )
   }
 }
 
-function MyFunctionalComponent(props) {
+function MyFunctionalComponent (props) {
   const { heading } = props
   return <h1>{heading}</h1>
 }
 
-function App() {
+function App () {
   const someCondition = true // try changing true with false
 
   if (someCondition === true) {
     return (
-      <div style={{display: 'grid', justifyContent: 'center', alignItems: 'center'}}>
+      <div
+        style={{
+          display: 'grid',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
         <div>
           <MyFunctionalComponent heading='Cities List' />
           <MyComponent />
@@ -114,9 +136,7 @@ function App() {
       </div>
     )
   } else {
-    return (
-      <h1>Sorry nothing to display</h1>
-    )
+    return <h1>Sorry nothing to display</h1>
   }
 }
 
