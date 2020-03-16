@@ -1,0 +1,13 @@
+body {
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  h1 {
+    color: navy;
+    text-decoration: underline;
+  }
+  
+  .li-styling {
+    margin: 10px;
+  }
