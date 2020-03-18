@@ -5,24 +5,20 @@ import React from 'react'
 function ControlledInputBox (props) {
   const { handleInputChange, textBoxValue } = props
 
-  return (
-    <input type='text' value={textBoxValue} onChange={handleInputChange} />
-  )
+  return <input type='text' value={textBoxValue} onChange={handleInputChange} />
 }
 
 function ButtonComponent (props) {
-  return (
-    <button>Save changes</button>
-  )
+  return <button>Save changes</button>
 }
 
 class MyComponent extends React.Component {
   state = {
-      cityArray: ['Karachi', 'Lahore', 'Peshawar', 'Quetta'],
-      textBoxValue: ''
-    }
-  
-  handleInputChange = (e) => {
+    cityArray: ['Karachi', 'Lahore', 'Peshawar', 'Quetta'],
+    textBoxValue: ''
+  }
+
+  handleInputChange = e => {
     const { value } = e.target
     this.setState({
       textBoxValue: value
@@ -34,14 +30,14 @@ class MyComponent extends React.Component {
 
     this.setState(prevState => ({
       cityArray: [...prevState.cityArray, textBoxValue],
-      textBoxValue: '',
+      textBoxValue: ''
     }))
   }
 
-  removeCity = (event) => {
+  removeCity = event => {
     const { cityArray } = this.state
     const { value } = event.target
-    
+
     const newCityArray = cityArray.filter(city => city !== value)
 
     this.setState({
@@ -49,12 +45,12 @@ class MyComponent extends React.Component {
     })
   }
 
-  handleForm = (event) => {
+  handleForm = event => {
     const { textBoxValue } = this.state
-    
+
     event.preventDefault()
 
-    if(textBoxValue === '') {
+    if (textBoxValue === '') {
       alert('Please enter city name to save')
     } else {
       this.addCity()
@@ -63,15 +59,24 @@ class MyComponent extends React.Component {
 
   render () {
     const { cityArray, textBoxValue } = this.state
-    
+
     return (
       <form onSubmit={this.handleForm}>
         <ul>
-          {
-            cityArray.map(city => <li key={city}> {city} <button value={city} onClick={this.removeCity}>X</button></li>)
-          }
+          {cityArray.map(city => (
+            <li key={city}>
+              {' '}
+              {city}{' '}
+              <button value={city} onClick={this.removeCity}>
+                X
+              </button>
+            </li>
+          ))}
         </ul>
-        <ControlledInputBox textBoxValue={textBoxValue} handleInputChange={this.handleInputChange}/>
+        <ControlledInputBox
+          textBoxValue={textBoxValue}
+          handleInputChange={this.handleInputChange}
+        />
         <ButtonComponent />
       </form>
     )

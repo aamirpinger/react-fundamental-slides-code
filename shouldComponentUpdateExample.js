@@ -52,13 +52,29 @@ class MyComponent extends React.Component {
 
   componentDidMount () {
     /** External API call can be done here and update the state when data received */
-    const dataReceivedFromAPICall = ['Karachi', 'Lahore', 'Peshawar', 'Quetta']
+    const dataReceivedFromAPICall = [
+      'Karachi',
+      'Lahore',
+      'Peshawar',
+      'Quetta',
+      'Swat'
+    ]
 
     setTimeout(() => {
       this.setState({
         cityArray: dataReceivedFromAPICall
       })
     }, 1000)
+  }
+
+  shouldComponentUpdate (nextProps, nextState) {
+    const { cityArray } = nextState
+    const findCity = cityArray.indexOf('Swat')
+
+    // Remove 'Swat' from componentDidMount method and see the change on browser
+    if (findCity === -1) return false
+
+    return true
   }
 
   handleInputChange = e => {
